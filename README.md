@@ -1,8 +1,11 @@
-# React + Vite
+# Membangun Single Page Application dengan React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplikasi ini adalah sebuah Single Page Application (SPA) yang digunakan untuk mencatat catatan pribadi. Aplikasi ini menggunakan RESTful API sebagai sumber data, context untuk mengelola tema dan bahasa, serta hooks untuk mengatur logika komponen.
 
-Currently, two official plugins are available:
+## Dependencies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [React](https://reactjs.org/): Library JavaScript untuk membangun antarmuka pengguna.
+- [react-icons](https://react-icons.github.io/react-icons/): Library ikon React yang menyediakan berbagai ikon yang siap digunakan.
+- [react-router-dom](https://reactrouter.com/web/guides/quick-start): Library routing untuk React yang memungkinkan navigasi antar halaman.
+- [prop-types](https://www.npmjs.com/package/prop-types): Library untuk melakukan validasi properti komponen React.
+- [html-react-parser](https://www.npmjs.com/package/html-react-parser): Library untuk mengurai dan merender HTML menjadi komponen React.
