@@ -75,6 +75,10 @@ function App() {
     fetchUser();
   }, []);
 
+  React.useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
   if (initializing) {
     return null;
   }
@@ -107,7 +111,9 @@ function App() {
     <LocaleContext.Provider value={contextValues}>
       <div className="app-container">
         <header>
-          <h1><Link to="/">Notes App</Link></h1>
+          <h1>
+            <Link to="/">Notes App</Link>
+          </h1>
           <Navigation logout={onLogoutHandler} name={authedUser.name} />
         </header>
         <main>
