@@ -3,6 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import { getUserLogged, putAccessToken } from "./utils/network-data";
 import LocaleContext from "./contexts/LocaleContext";
 import Navigation from "./components/Navigation";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -42,7 +46,7 @@ function App() {
   }, [locale, theme]);
 
   // login sukses
-  const onLoginHandler = async ({ accessToken }) => {
+  const onLoginSuccessHandler = async ({ accessToken }) => {
     // menaruh token ke localStorage
     putAccessToken(accessToken);
     const { data } = await getUserLogged();
@@ -84,8 +88,8 @@ function App() {
           </header>
           <main>
             <Routes>
-              <Route path="/*" element={<p>login</p>} />
-              <Route path="/register" element={<p>register</p>} />
+              <Route path="/*" element={<LoginPage loginSuccess={onLoginSuccessHandler} />} />
+              <Route path="/register" element={<RegisterPage />} />
             </Routes>
           </main>
         </div>
@@ -103,9 +107,9 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<p>homepage</p>} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/archived" element={<p>archivedpage</p>} />
-            <Route path="/note/:id" element={<p>detailNote</p>} />
+            <Route path="/notes/:id" element={<DetailPage />} />
             <Route path="/note/add" element={<p>addpage</p>} />
             <Route path="*" element={<p>notfound</p>} />
           </Routes>

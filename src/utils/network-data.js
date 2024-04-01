@@ -141,7 +141,7 @@ async function unarchiveNote(id) {
 
   if (responseJson.status !== 'success') {
     return { error: true, data: null };
-  }
+}
 
   return { error: false, data: responseJson.data };
 }
