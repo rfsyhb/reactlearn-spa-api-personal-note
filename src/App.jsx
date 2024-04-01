@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 import ArchivedPage from "./pages/ArchivedPage";
+import CreatePage from "./pages/CreatePage";
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -89,7 +90,10 @@ function App() {
           </header>
           <main>
             <Routes>
-              <Route path="/*" element={<LoginPage loginSuccess={onLoginSuccessHandler} />} />
+              <Route
+                path="/*"
+                element={<LoginPage loginSuccess={onLoginSuccessHandler} />}
+              />
               <Route path="/register" element={<RegisterPage />} />
             </Routes>
           </main>
@@ -111,7 +115,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/archived" element={<ArchivedPage />} />
             <Route path="/notes/:id" element={<DetailPage />} />
-            <Route path="/note/add" element={<p>addpage</p>} />
+            <Route path="/note/add" element={<CreatePage />} />
             <Route path="*" element={<p>notfound</p>} />
           </Routes>
         </main>
