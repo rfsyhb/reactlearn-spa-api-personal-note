@@ -8,15 +8,23 @@ function HomePage() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [notes, setNotes] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [keyword, setKeyword] = React.useState(() => {
     return searchParams.get("keyword") || "";
   });
 
   // ketika pertama kali load
   React.useEffect(() => {
-    getActiveNotes().then(({ data }) => {
-      setNotes(data);
-    });
+    const fetchNotes = async () => {
+      setIsLoading(true);
+      const result = await getActiveNotes();
+      if (!result.error) {
+        setNotes(result.data);
+      }
+      setIsLoading(false);
+    };
+
+    fetchNotes();
   }, []);
 
   const onKeywordChangeHandler = (keyword) => {
@@ -32,12 +40,18 @@ function HomePage() {
     <section className="homepage">
       <h2>Active Notes</h2>
       <SearchBar keyword={keyword} keywordChanges={onKeywordChangeHandler} />
-      <NotesList filteredNotes={filteredNotes} />
-      <div className="homepage__action">
-        <button className="action" onClick={() => navigate("/note/add")}>
-          +
-        </button>
-      </div>
+      {isLoading ? (
+        <p>Fetching notes...</p>
+      ) : (
+        <>
+          <NotesList filteredNotes={filteredNotes} />
+          <div className="homepage__action">
+            <button className="action" onClick={() => navigate("/note/add")}>
+              +
+            </button>
+          </div>
+        </>
+      )}
     </section>
   );
 }

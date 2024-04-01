@@ -10,11 +10,19 @@ function ArchivedPage() {
     return searchParams.get("keyword") || "";
   });
   const [notes, setNotes] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
-    getArchivedNotes().then(({ data }) => {
-      setNotes(data);
-    });
+    const fetchNotes = async () => {
+      setIsLoading(true);
+      const result = await getArchivedNotes();
+      if (!result.error) {
+        setNotes(result.data);
+      }
+      setIsLoading(false);
+    };
+
+    fetchNotes();
   }, []);
 
   const onKeywordChangeHandler = (keyword) => {
@@ -30,9 +38,13 @@ function ArchivedPage() {
     <section className="archives-page">
       <h2>Archived Notes</h2>
       <SearchBar keyword={keyword} keywordChanges={onKeywordChangeHandler} />
-      <NotesList filteredNotes={filteredNotes} />
+      {isLoading ? (
+        <p>fetching notes...</p>
+      ) : (
+        <NotesList filteredNotes={filteredNotes} />
+      )}
     </section>
-  )
+  );
 }
 
 export default ArchivedPage;
