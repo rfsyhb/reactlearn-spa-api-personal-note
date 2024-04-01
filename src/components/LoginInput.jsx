@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import LocaleContext from "../contexts/LocaleContext";
 
 function LoginInput({ login }) {
+  const { locale } = React.useContext(LocaleContext);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -25,7 +27,7 @@ function LoginInput({ login }) {
       <input
         id="email"
         type="email"
-        placeholder="Masukkan email anda"
+        placeholder={locale === "id" ? "Masukkan email anda" : "Insert your email"}
         value={email}
         onChange={onEmailChangeHandler}
         autoComplete="off"
@@ -34,7 +36,7 @@ function LoginInput({ login }) {
       <input
         id="password"
         type="password"
-        placeholder="Masukkan password anda"
+        placeholder={locale === "id" ? "Masukkan password anda" : "Insert your password"}
         value={password}
         onChange={onPasswordChangeHandler}
       />

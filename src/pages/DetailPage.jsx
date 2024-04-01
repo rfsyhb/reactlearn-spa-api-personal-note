@@ -7,8 +7,10 @@ import {
   unarchiveNote,
 } from "../utils/network-data";
 import NoteDetail from "../components/NoteDetail";
+import LocaleContext from "../contexts/LocaleContext";
 
 function DetailPage() {
+  const { locale } = React.useContext(LocaleContext);
   // mengambil id dari url
   const { id } = useParams();
 
@@ -54,7 +56,7 @@ function DetailPage() {
   if (!note) {
     return (
       <section className="error-page">
-        <p>Note is not found!</p>
+        <p>{locale === "id" ? "Catatan tidak ditemukan!" : "Note is not found!"}</p>
       </section>
     );
   }

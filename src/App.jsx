@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 import ArchivedPage from "./pages/ArchivedPage";
 import CreatePage from "./pages/CreatePage";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -89,8 +90,13 @@ function App() {
       <LocaleContext.Provider value={contextValues}>
         <div className="app-container">
           <header>
-            <h1>Notes App</h1>
-            {/* <Navigation logout={onLogoutHandler} name={authedUser.name}/> */}
+            <h1>{locale === "id" ? "Aplikasi Catatan" : "Notes App"}</h1>
+            <button className="toggle-theme" onClick={toggleLocale}>
+              <p>{locale === "id" ? "en" : "id"}</p>
+            </button>
+            <button className="toggle-theme" onClick={toggleTheme}>
+              {theme === "light" ? <FiMoon /> : <FiSun />}
+            </button>
           </header>
           <main>
             <Routes>
@@ -112,7 +118,9 @@ function App() {
       <div className="app-container">
         <header>
           <h1>
-            <Link to="/">{locale === "id" ? "Aplikasi Catatan" : "Notes App"}</Link>
+            <Link to="/">
+              {locale === "id" ? "Aplikasi Catatan" : "Notes App"}
+            </Link>
           </h1>
           <Navigation logout={onLogoutHandler} name={authedUser.name} />
         </header>
