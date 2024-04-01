@@ -1,22 +1,10 @@
-import React from "react";
 import PropTypes from "prop-types";
+import useInput from "../hooks/useInput";
 
 function RegisterInput({ register }) {
-  const [name, setName] = React.useState();
-  const [email, setEmail] = React.useState();
-  const [password, setPassword] = React.useState();
-
-  const onNameChangeHandler = (e) => {
-    setName(e.target.value);
-  };
-
-  const onEmailChangeHandler = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const onPasswordChangeHandler = (e) => {
-    setPassword(e.target.value);
-  };
+  const [name, onNameChangeHandler] = useInput("");
+  const [email, onEmailChangeHandler] = useInput("");
+  const [password, onPasswordChangeHandler] = useInput("");
 
   const onSubmitFormHandler = (e) => {
     e.preventDefault();
