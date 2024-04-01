@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LocaleContext from "../contexts/LocaleContext";
+import PropTypes from "prop-types";
 
 function Navigation({ logout, name }) {
   const { locale, toggleLocale, theme, toggleTheme } =
@@ -22,7 +23,7 @@ function Navigation({ logout, name }) {
           <Link to="/">Active</Link>
         </li>
         <li>
-          <Link to="/archive">Archived</Link>
+          <Link to="/archived">Archived</Link>
         </li>
         <li>
           <Link to="/note/add">Add</Link>
@@ -36,5 +37,10 @@ function Navigation({ logout, name }) {
     </nav>
   );
 }
+
+Navigation.propTypes = {
+  logout: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default Navigation;

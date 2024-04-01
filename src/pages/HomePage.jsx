@@ -29,7 +29,7 @@ function HomePage() {
 
   return (
     <section className="homepage">
-      <p>Active Notes</p>
+      <h2>Active Notes</h2>
       <SearchBar keyword={keyword} keywordChanges={onKeywordChangeHandler} />
       <NotesList filteredNotes={filteredNotes}/>
     </section>

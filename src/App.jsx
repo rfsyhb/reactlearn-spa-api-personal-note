@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
+import ArchivedPage from "./pages/ArchivedPage";
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -108,7 +109,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/archived" element={<p>archivedpage</p>} />
+            <Route path="/archived" element={<ArchivedPage />} />
             <Route path="/notes/:id" element={<DetailPage />} />
             <Route path="/note/add" element={<p>addpage</p>} />
             <Route path="*" element={<p>notfound</p>} />
