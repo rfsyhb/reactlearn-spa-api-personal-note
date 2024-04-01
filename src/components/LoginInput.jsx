@@ -28,6 +28,7 @@ function LoginInput({ login }) {
         placeholder="Masukkan email anda"
         value={email}
         onChange={onEmailChangeHandler}
+        autoComplete="off"
       />
       <label htmlFor="password">Password</label>
       <input

@@ -35,6 +35,7 @@ function RegisterInput({ register }) {
         placeholder="Masukkan nama anda"
         value={name}
         onChange={onNameChangeHandler}
+        autoComplete="off"
       />
       <label htmlFor="email">Email</label>
       <input
@@ -43,6 +44,7 @@ function RegisterInput({ register }) {
         placeholder="Masukkan email anda"
         value={email}
         onChange={onEmailChangeHandler}
+        autoComplete="off"
       />
       <label htmlFor="password">Password</label>
       <input
