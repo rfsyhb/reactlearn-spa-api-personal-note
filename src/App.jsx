@@ -2,35 +2,44 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { getUserLogged, putAccessToken } from "./utils/network-data";
 import LocaleContext from "./contexts/LocaleContext";
+import Navigation from "./components/Navigation";
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
-  const [language, setLanguage] = React.useState("id");
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [locale, setLocale] = React.useState(
+    localStorage.getItem("locale") || "id"
+  );
+  const [theme, setTheme] = React.useState(
+    localStorage.getItem("theme") || "light"
+  );
 
-  // setLanguage
-  const toggleLanguage = () => {
-    setLanguage((prevLanguage) => {
-      return prevLanguage === "id" ? "en" : "id";
+  // setLocale
+  const toggleLocale = () => {
+    setLocale((prevLocale) => {
+      const newLocale = prevLocale === "id" ? "en" : "id";
+      localStorage.setItem("locale", newLocale);
+      return newLocale;
     });
   };
 
-  // setDarkMode
-  const toggleDark = () => {
-    setDarkMode((prevDarkMode) => {
-      return prevDarkMode === false ? true : false;
+  // setTheme
+  const toggleTheme = () => {
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === "light" ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      return newTheme;
     });
   };
 
   const contextValues = React.useMemo(() => {
     return {
-      language,
-      toggleLanguage,
-      darkMode,
-      toggleDark,
+      locale,
+      toggleLocale,
+      theme,
+      toggleTheme,
     };
-  }, [language, darkMode]);
+  }, [locale, theme]);
 
   // login sukses
   const onLoginHandler = async ({ accessToken }) => {
@@ -69,7 +78,10 @@ function App() {
     return (
       <LocaleContext.Provider value={contextValues}>
         <div className="app-container">
-          <header></header>
+          <header>
+            <h1>Notes App</h1>
+            {/* <Navigation logout={onLogoutHandler} name={authedUser.name}/> */}
+          </header>
           <main>
             <Routes>
               <Route path="/*" element={<p>login</p>} />
@@ -87,6 +99,7 @@ function App() {
       <div className="app-container">
         <header>
           <h1>Notes App</h1>
+          <Navigation logout={onLogoutHandler} name={authedUser.name} />
         </header>
         <main>
           <Routes>
