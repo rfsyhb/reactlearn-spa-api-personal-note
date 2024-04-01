@@ -28,7 +28,7 @@ function DetailPage() {
     };
 
     fetchNote();
-  });
+  }, [id]);
 
   const onDeleteHandler = async (id) => {
     await deleteNote(id);
