@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { getUserLogged, putAccessToken } from "./utils/network-data";
 import LocaleContext from "./contexts/LocaleContext";
 import Navigation from "./components/Navigation";
@@ -107,7 +107,7 @@ function App() {
     <LocaleContext.Provider value={contextValues}>
       <div className="app-container">
         <header>
-          <h1>Notes App</h1>
+          <h1><Link to="/">Notes App</Link></h1>
           <Navigation logout={onLogoutHandler} name={authedUser.name} />
         </header>
         <main>

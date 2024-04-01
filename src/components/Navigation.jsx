@@ -20,13 +20,7 @@ function Navigation({ logout, name }) {
           </button>
         </li>
         <li>
-          <Link to="/">Active</Link>
-        </li>
-        <li>
           <Link to="/archived">Archived</Link>
-        </li>
-        <li>
-          <Link to="/note/add">Add</Link>
         </li>
         <li>
           <button className="button-logout" onClick={logout}>
