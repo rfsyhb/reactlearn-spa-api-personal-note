@@ -3,8 +3,10 @@ import { useSearchParams } from "react-router-dom";
 import { getArchivedNotes } from "../utils/network-data";
 import SearchBar from "../components/SearchBar";
 import NotesList from "../components/NotesList";
+import LocaleContext from "../contexts/LocaleContext";
 
 function ArchivedPage() {
+  const { locale } = React.useContext(LocaleContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = React.useState(() => {
     return searchParams.get("keyword") || "";
@@ -36,7 +38,7 @@ function ArchivedPage() {
 
   return (
     <section className="archives-page">
-      <h2>Archived Notes</h2>
+      <h2>{locale === "id" ? "Catatan Terarsip" : "Archived Notes"}</h2>
       <SearchBar keyword={keyword} keywordChanges={onKeywordChangeHandler} />
       {isLoading ? (
         <p>fetching notes...</p>

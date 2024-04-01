@@ -20,7 +20,7 @@ function Navigation({ logout, name }) {
           </button>
         </li>
         <li>
-          <Link to="/archived">Archived</Link>
+          <Link to="/archived">{locale === "id" ? "Catatan terarsip" : "Archived Note"}</Link>
         </li>
         <li>
           <button className="button-logout" onClick={logout}>

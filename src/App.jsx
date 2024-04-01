@@ -112,7 +112,7 @@ function App() {
       <div className="app-container">
         <header>
           <h1>
-            <Link to="/">Notes App</Link>
+            <Link to="/">{locale === "id" ? "Aplikasi Catatan" : "Notes App"}</Link>
           </h1>
           <Navigation logout={onLogoutHandler} name={authedUser.name} />
         </header>
