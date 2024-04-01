@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import LocaleContext from "../contexts/LocaleContext";
 
@@ -9,12 +9,12 @@ function Navigation({ logout, name }) {
     <nav className="navigation">
       <ul>
         <li>
-          <button onClick={toggleLocale}>
+          <button className="toggle-locale" onClick={toggleLocale}>
             {locale === "id" ? "en" : "id"}
           </button>
         </li>
         <li>
-          <button onClick={toggleTheme}>
+          <button className="toggle-theme" onClick={toggleTheme}>
             {theme === "light" ? "dark" : "light"}
           </button>
         </li>
@@ -28,7 +28,9 @@ function Navigation({ logout, name }) {
           <Link to="/note/add">Add</Link>
         </li>
         <li>
-          <button onClick={logout}>{name}</button>
+          <button className="button-logout" onClick={logout}>
+            {name}
+          </button>
         </li>
       </ul>
     </nav>

@@ -21,9 +21,19 @@ function LoginInput({ login }) {
 
   return (
     <form className="input-login" onSubmit={onSubmitHandler}>
-      <input type="email" value={email} onChange={onEmailChangeHandler} />
+      <label htmlFor="email">Email</label>
       <input
+        id="email"
+        type="email"
+        placeholder="Masukkan email anda"
+        value={email}
+        onChange={onEmailChangeHandler}
+      />
+      <label htmlFor="password">Password</label>
+      <input
+        id="password"
         type="password"
+        placeholder="Masukkan password anda"
         value={password}
         onChange={onPasswordChangeHandler}
       />

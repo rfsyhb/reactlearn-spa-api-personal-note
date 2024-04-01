@@ -28,11 +28,11 @@ function RegisterInput({ register }) {
 
   return (
     <form className="input-register" onSubmit={onSubmitFormHandler}>
-      <label htmlFor="name">Username</label>
+      <label htmlFor="name">Name</label>
       <input
         id="name"
         type="text"
-        placeholder="Name"
+        placeholder="Masukkan nama anda"
         value={name}
         onChange={onNameChangeHandler}
       />
@@ -40,7 +40,7 @@ function RegisterInput({ register }) {
       <input
         id="email"
         type="email"
-        placeholder="Email"
+        placeholder="Masukkan email anda"
         value={email}
         onChange={onEmailChangeHandler}
       />
@@ -48,10 +48,11 @@ function RegisterInput({ register }) {
       <input
         id="password"
         type="password"
-        placeholder="Password"
+        placeholder="Masukkan password anda"
         value={password}
         onChange={onPasswordChangeHandler}
       />
+      <button>Register</button>
     </form>
   );
 }
