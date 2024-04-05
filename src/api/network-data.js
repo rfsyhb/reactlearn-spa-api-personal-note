@@ -186,3 +186,111 @@ async function getArchivedNotes() {
 
   return { error: false, data: responseJson.data };
 }
+
+// GET A NOTE
+// Authentication needed
+// {id} for path params
+async function getNote(id) {
+  const response = await fetchWithToken(new URL(`/notes/${id}`, BASE_URL));
+
+  // ! 'GET'
+  // * dokumentasi API, response /notes/{note_id}
+  // "status": "success",
+  // "message": "Note retrieved",
+  // "data": { "id", "title", "body", "createdAt", "archived", "owner" }
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+}
+
+// ARCHIVE a NOTE
+// Authentication needed
+// {id} for path
+async function archiveNote(id) {
+  const response = await fetchWithToken(
+    new URL(`/notes/${id}/archive`, BASE_URL),
+    {
+      method: "POST",
+    }
+  );
+
+  // ! 'POST'
+  // * dokumentasi API, response /notes/{note_id}/archive
+  // "status": "success",
+  // "message": "Note archived",
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  // ? what
+  return { error: false, data: responseJson.data };
+}
+
+// UNARCHIVE a NOTE
+// Authentication needed
+// {id} for path
+async function unarchiveNote(id) {
+  const response = await fetchWithToken(
+    new URL(`/notes/${id}/unarchive`, BASE_URL),
+    {
+      method: "POST",
+    }
+  );
+
+  // ! 'POST'
+  // * dokumentasi API, response /notes/{note_id}/unarchive
+  // "status": "success",
+  // "message": "Note unarchived",
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  // ? what
+  return { error: false, data: responseJson.data };
+}
+
+// DELETE a NOTE
+// Authentication needed
+// {id} fot path
+async function deleteNote(id) {
+  const response = await fetchWithToken(new URL(`/notes/${id}`, BASE_URL), {
+    method: "DELETE",
+  });
+
+  // ! 'DELETE'
+  // * dokumentasi API, response /notes/{note_id}/unarchive
+  // "status": "success",
+  // "message": "Note deleted",
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  // ? what
+  return { error: false, data: responseJson.data };
+}
+
+export {
+  getAccessToken,
+  putAccessToken,
+  // fetchWithToken,
+  login,
+  register,
+  getUserLogged,
+  addNote,
+  getActiveNotes,
+  getArchivedNotes,
+  getNote,
+  archiveNote,
+  unarchiveNote,
+  deleteNote,
+};
