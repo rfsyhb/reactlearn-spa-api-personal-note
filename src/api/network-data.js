@@ -42,7 +42,7 @@ async function fetchWithToken(url, options = {}) {
     ...options,
     headers: {
       ...options.headers,
-      Authorization: `Bearer ${getAccessToken}`,
+      Authorization: `Bearer ${getAccessToken()}`,
     },
   });
 }
@@ -79,7 +79,7 @@ async function login({ email, password }) {
 async function register({ name, email, password }) {
   // 'POST'
   // menggunakan new class untuk URL '/register'
-  const response = await fetch(new URL("register", BASE_URL), {
+  const response = await fetch(`${BASE_URL}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -106,7 +106,7 @@ async function register({ name, email, password }) {
 async function getUserLogged() {
   // remember: fetchWithToken = (url, option(optional))
   // info: 'GET' adalah nilai default untuk method
-  const response = await fetchWithToken(new URL("/users/me", BASE_URL));
+  const response = await fetchWithToken(`${BASE_URL}/users/me`);
 
   // ! 'GET'
   // * dokumentasi API, response /users/me
@@ -126,7 +126,7 @@ async function getUserLogged() {
 // Authorization needed
 // ? request body: { title, body }
 async function addNote({ title, body }) {
-  const response = await fetchWithToken(new URL("/notes", BASE_URL), {
+  const response = await fetchWithToken(`${BASE_URL}/notes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -153,7 +153,7 @@ async function addNote({ title, body }) {
 async function getActiveNotes() {
   // tidak usah menjelaskan method
   // 'GET' adalah nilai default
-  const response = await fetchWithToken(new URL("/notes", BASE_URL));
+  const response = await fetchWithToken(`${BASE_URL}/notes`);
 
   // ! 'GET'
   // * dokumentasi API, response /notes
@@ -172,7 +172,7 @@ async function getActiveNotes() {
 // GET ARCHIVED
 // Authorization needed
 async function getArchivedNotes() {
-  const response = await fetchWithToken(new URL("/notes/archived", BASE_URL));
+  const response = await fetchWithToken(`${BASE_URL}/notes/archived`);
   const responseJson = await response.json();
 
   // ! 'GET'
@@ -191,7 +191,7 @@ async function getArchivedNotes() {
 // Authentication needed
 // {id} for path params
 async function getNote(id) {
-  const response = await fetchWithToken(new URL(`/notes/${id}`, BASE_URL));
+  const response = await fetchWithToken(`${BASE_URL}/notes/${id}`);
 
   // ! 'GET'
   // * dokumentasi API, response /notes/{note_id}
@@ -212,7 +212,7 @@ async function getNote(id) {
 // {id} for path
 async function archiveNote(id) {
   const response = await fetchWithToken(
-    new URL(`/notes/${id}/archive`, BASE_URL),
+    `${BASE_URL}/notes/${id}/archive`,
     {
       method: "POST",
     }
@@ -237,7 +237,7 @@ async function archiveNote(id) {
 // {id} for path
 async function unarchiveNote(id) {
   const response = await fetchWithToken(
-    new URL(`/notes/${id}/unarchive`, BASE_URL),
+    `${BASE_URL}/notes/${id}/unarchive`,
     {
       method: "POST",
     }
@@ -261,7 +261,7 @@ async function unarchiveNote(id) {
 // Authentication needed
 // {id} fot path
 async function deleteNote(id) {
-  const response = await fetchWithToken(new URL(`/notes/${id}`, BASE_URL), {
+  const response = await fetchWithToken(`${BASE_URL}/notes/${id}`, {
     method: "DELETE",
   });
 
