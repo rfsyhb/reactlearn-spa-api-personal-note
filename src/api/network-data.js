@@ -1,3 +1,12 @@
+/*
+* Symbols
+  getAccessToken()
+  putAccessToken(accessToken)
+  fetchWithToken(url, options)
+
+
+*/
+
 const BASE_URL = "https://notes-api.dicoding.dev/v1";
 
 // mengambil token dari localStorage
@@ -38,7 +47,7 @@ async function fetchWithToken(url, options = {}) {
   });
 }
 
-// login / authenticate
+// LOGIN
 async function login({ email, password }) {
   // mengirim data 'POST'
   // dan mendapatkan jawaban 'response'
@@ -50,16 +59,128 @@ async function login({ email, password }) {
     body: JSON.stringify({ email, password }),
   });
 
-  // mengubah menjadi json
+  // ! 'POST'
   // * pada dokumentasi API, response /login:
-  // 'status: "success"'
-  // 'message: "User logged successfully"'
-  // 'data: {'accessToken'}'
+  // '"status": "success"'
+  // '"message": "User logged successfully"'
+  // '"data": {'accessToken'}'
   const responseJson = await response.json();
 
   // error handling
   if (responseJson.status !== "success") {
     alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+}
+
+// REGISTER
+async function register({ name, email, password }) {
+  // 'POST'
+  // menggunakan new class untuk URL '/register'
+  const response = await fetch(new URL("register", BASE_URL), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email, password }),
+  });
+
+  // ! 'POST'
+  // * dokumentasi API, response /register:
+  // "status": "success",
+  // "message": "User Created"
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    alert(responseJson.message);
+    return { error: true };
+  }
+
+  return { error: false };
+}
+
+// GET DATA USER
+// ambil data user sesuai dengan token yang ada
+async function getUserLogged() {
+  // remember: fetchWithToken = (url, option(optional))
+  // info: 'GET' adalah nilai default untuk method
+  const response = await fetchWithToken(new URL("/users/me", BASE_URL));
+
+  // ! 'GET'
+  // * dokumentasi API, response /users/me
+  // "status": "success",
+  // "message": "User retrieved",
+  // "data": { "id": "", "name": "", "email": ""}
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+}
+
+// CREATE NOTE
+// Authorization needed
+// ? request body: { title, body }
+async function addNote({ title, body }) {
+  const response = await fetchWithToken(new URL("/notes", BASE_URL), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ title, body }),
+  });
+
+  // ! 'POST'
+  // * dokumentasi API, response /notes
+  // "status": "success",
+  // "message": "Note created",
+  // "data": {"id", "title", "body", "owner", "archived", "createdAt"}
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+}
+
+// GET UNARCHIVED
+// Authorization needed
+async function getActiveNotes() {
+  // tidak usah menjelaskan method
+  // 'GET' adalah nilai default
+  const response = await fetchWithToken(new URL("/notes", BASE_URL));
+
+  // ! 'GET'
+  // * dokumentasi API, response /notes
+  // "status": "success",
+  // "message": "Notes retrieved",
+  // "data": { "id", "title", "body", "createdAt", "archived", "owner" }
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+}
+
+// GET ARCHIVED
+// Authorization needed
+async function getArchivedNotes() {
+  const response = await fetchWithToken(new URL("/notes/archived", BASE_URL));
+  const responseJson = await response.json();
+
+  // ! 'GET'
+  // * dokumentasi API, response /notes/archived
+  // "status": "success",
+  // "message": "Notes retrieved",
+  // "data": { "id", "title", "body", "createdAt", "archived", "owner" }
+  if (responseJson.status !== "success") {
     return { error: true, data: null };
   }
 
