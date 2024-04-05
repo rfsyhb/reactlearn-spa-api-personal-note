@@ -4,6 +4,8 @@ import useTheme from "./hooks/useTheme";
 import * as NetworkData from "./api/network-data";
 import AppContext from "./contexts/AppContext";
 import { Routes, Route, Link } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   // App state
@@ -63,8 +65,8 @@ function App() {
           <header></header>
           <main>
             <Routes>
-              <Route path="/*" element={<p>Login</p>} />
-              <Route path="/register" element={<p>Register</p>} />
+              <Route path="/*" element={<LoginPage onLoginSuccess={onLoginSuccessHandler} />} />
+              <Route path="/register" element={<RegisterPage />} />
             </Routes>
           </main>
         </div>
