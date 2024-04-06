@@ -14,7 +14,7 @@ function ArchivedPage() {
 
   const [notes, setNotes] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-
+  
   React.useEffect(() => {
     async function fetchArchivedNotes() {
       setIsLoading(true);
@@ -26,7 +26,7 @@ function ArchivedPage() {
     }
 
     fetchArchivedNotes();
-  });
+  }, []);
 
   // function digunakan oleh input pada onChange
   function onKeywordChangeHandler(keyword) {

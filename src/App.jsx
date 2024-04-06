@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import ArchivedPage from "./pages/ArchivedPage";
+import NavigationBar from "./components/NavigationBar";
 
 function App() {
   // App state
@@ -84,6 +85,7 @@ function App() {
           <h1>
             <Link to="/">{locale === "id" ? "Aplikasi Catatan" : "Notes App"}</Link>
           </h1>
+          <NavigationBar logout={onLogoutHandler} name={authedUser.name}/>
         </header>
         <main>
           <Routes>
