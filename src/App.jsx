@@ -7,6 +7,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
+import ArchivedPage from "./pages/ArchivedPage";
 
 function App() {
   // App state
@@ -87,7 +88,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/archived" element={<p>Register</p>} />
+            <Route path="/archived" element={<ArchivedPage />} />
             <Route path="/notes/:id" element={<p>Register</p>} />
             <Route path="/note/add" element={<p>Register</p>} />
             <Route path="/*" element={<p>notfound</p>} />
