@@ -1,12 +1,17 @@
-// Cari tau dulu whats needed
 /*
-* CreatePage
-  - Form Input
-  - state
-  - onChange handler
-  - add to API
-  - navigate
+? CreatePage
+- useNavigate
+- state (custom hooks)
+  - title
+- state (useState)
+  - body
+- handlers
+  - body change
+  - sumit form
+- child
+  - NoteCreate
 */
+
 import { useNavigate } from "react-router-dom";
 import useInput from "../hooks/useInput";
 import React from "react";

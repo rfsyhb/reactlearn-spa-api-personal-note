@@ -1,3 +1,13 @@
+/*
+? DetailPage
+- useParams
+- useNavigate
+- state (useState)
+  - note
+- effect (useEffect)
+  - fetch a note
+*/
+
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as NetworkData from "../api/network-data";

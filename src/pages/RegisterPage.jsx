@@ -1,3 +1,12 @@
+/*
+? RegisterPage
+- useNavigate
+- handlers
+  - register to API (for: RegisterInput)
+- child
+  - RegisterInput
+*/
+
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../api/network-data";
 import RegisterInput from "../components/RegisterInput";

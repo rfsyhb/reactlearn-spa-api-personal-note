@@ -1,3 +1,21 @@
+/*
+? HomePage
+- useNavigate
+- useSearchParams
+- state (useState)
+  - keyword
+  - notes
+  - isLoading
+- effect (useEffect)
+  - fetch notes, unarchived
+- handlers
+  - keyword change (for: SearchBar)
+- filteredNotes (for: NotesList)
+- child
+  - SearchBar
+  - NotesList
+*/
+
 import React from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as NetworkData from "../api/network-data";

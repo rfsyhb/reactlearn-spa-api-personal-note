@@ -1,3 +1,20 @@
+/*
+? ArchivedPage
+- useSearchParams
+- states (useState)
+  - keyword
+  - notes
+  - isLoading
+- effect (useEffect)
+  - fetch notes, archived
+- handler
+  - keyword change (for: SearchBar)
+- filteredNotes (for: NotesList)
+- child
+  - SearchBar
+  - NotesList
+*/
+
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 import * as NetworkData from "../api/network-data";

@@ -1,3 +1,11 @@
+/*
+? LoginPage
+- handlers
+  - login to API (for: LoginInput)
+- child
+  - LoginInput
+*/
+
 import * as NetworkData from "../api/network-data";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
