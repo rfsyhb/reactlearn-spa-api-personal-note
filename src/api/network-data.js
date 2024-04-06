@@ -229,7 +229,7 @@ async function archiveNote(id) {
   }
 
   // ? what
-  return { error: false, data: responseJson.data };
+  return { error: false, status: responseJson.status, data: responseJson.data };
 }
 
 // UNARCHIVE a NOTE
@@ -254,7 +254,7 @@ async function unarchiveNote(id) {
   }
 
   // ? what
-  return { error: false, data: responseJson.data };
+  return { error: false, status: responseJson.status, data: responseJson.data };
 }
 
 // DELETE a NOTE
@@ -276,7 +276,7 @@ async function deleteNote(id) {
   }
 
   // ? what
-  return { error: false, data: responseJson.data };
+  return { error: false, status: responseJson.status, data: responseJson.data };
 }
 
 export {

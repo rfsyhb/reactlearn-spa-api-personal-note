@@ -9,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import ArchivedPage from "./pages/ArchivedPage";
 import NavigationBar from "./components/NavigationBar";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   // App state
@@ -91,7 +92,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/archived" element={<ArchivedPage />} />
-            <Route path="/notes/:id" element={<p>Register</p>} />
+            <Route path="/notes/:id" element={<DetailPage />} />
             <Route path="/note/add" element={<p>Register</p>} />
             <Route path="/*" element={<p>notfound</p>} />
           </Routes>
