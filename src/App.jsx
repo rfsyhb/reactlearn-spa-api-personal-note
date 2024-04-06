@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import ArchivedPage from "./pages/ArchivedPage";
 import NavigationBar from "./components/NavigationBar";
 import DetailPage from "./pages/DetailPage";
+import CreatePage from "./pages/CreatePage";
 
 function App() {
   // App state
@@ -93,7 +94,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/archived" element={<ArchivedPage />} />
             <Route path="/notes/:id" element={<DetailPage />} />
-            <Route path="/note/add" element={<p>Register</p>} />
+            <Route path="/note/add" element={<CreatePage />} />
             <Route path="/*" element={<p>notfound</p>} />
           </Routes>
         </main>
