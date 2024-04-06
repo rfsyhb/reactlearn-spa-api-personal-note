@@ -6,6 +6,7 @@ import AppContext from "./contexts/AppContext";
 import { Routes, Route, Link } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   // App state
@@ -85,7 +86,7 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<p>HomePage</p>} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/archived" element={<p>Register</p>} />
             <Route path="/notes/:id" element={<p>Register</p>} />
             <Route path="/note/add" element={<p>Register</p>} />
